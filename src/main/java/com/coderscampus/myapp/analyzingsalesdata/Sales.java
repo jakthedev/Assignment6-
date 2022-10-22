@@ -1,26 +1,28 @@
+package com.coderscampus.myapp.analyzingsalesdata;
 
+import com.coderscampus.myapp.analyzingsalesdata.Year;
 
 public class Sales {
     private String salesMonth;
-    private Integer salesYear;
+    private Year salesYear;
     private Integer numMonthlySales;
 
 
-    public Sales(String salesMonth, Integer salesYear, Integer numMonthlySales) {
+    public Sales(String salesMonth, Year salesYear, Integer numMonthlySales) {
         this.numMonthlySales = numMonthlySales;
         this.salesMonth = salesMonth;
-        this.salesYear = salesYear;
+        salesYear = Year.DEFAULT;
     }
 
     public String getSalesMonth(){
         return salesMonth;
     }
 
-    public String getSalesYear(){
+    public Year getSalesYear(){
         return salesYear;
     }
 
-    public String getnumMonthlySales(){
+    public Integer getnumMonthlySales(){
         return numMonthlySales;
     }
 
@@ -32,7 +34,7 @@ public class Sales {
         this.salesMonth = salesMonth;
     }
 
-    public void setSalesYear(String salesYear){
+    public void setSalesYear(Year salesYear){
         this.salesYear = salesYear;
     }
 
