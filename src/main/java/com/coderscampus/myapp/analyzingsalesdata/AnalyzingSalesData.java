@@ -5,26 +5,38 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import com.coderscampus.myapp.service.SalesService;
 
 public class AnalyzingSalesData {
 
     public static void main(String[] args) throws IOException{
     	
-    	System.out.println("things are working ");
-    	
-    	List<Sales> model3 = new ArrayList<>();
+    	Sales[] model3 = new Sales[100];
 
         BufferedReader salesReader = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM-yy");
+        int i = 0;
 
         try {
             salesReader = new BufferedReader(new FileReader("model3.csv"));
-            //salesReader.readline();
+            salesReader.readLine();
             
-            while (salesReader.readLine() != null) {
+            while (salesReader != null) {
                 String model3Info = salesReader.readLine();
-                String[] allModel3Info = model3Info.split(",");
+                String[] modelstr = model3Info.split(","); 
+                
+                // stream a if() in to where year is to match the constant status(year) it should go to
+                Sales sale = SalesService.createSalesData(YearMonth.parse(modelstr[0], formatter), 
+                		Integer.valueOf(modelstr[1]));
+                
+                model3[i++] = sale;
+           
             }
     } finally{
+    	if (salesReader != null)
+    		salesReader.close();
 
     	
     }

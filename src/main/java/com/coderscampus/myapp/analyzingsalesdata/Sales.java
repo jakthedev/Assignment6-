@@ -1,45 +1,38 @@
 package com.coderscampus.myapp.analyzingsalesdata;
 
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+
 import com.coderscampus.myapp.analyzingsalesdata.Year;
 
 public class Sales {
-    private String salesMonth;
-    private Year salesYear;
-    private Integer numMonthlySales;
+	private YearMonth date;
+    private Integer numMonthlySales; 
 
 
-    public Sales(String salesMonth, Year salesYear, Integer numMonthlySales) {
+    public Sales(YearMonth date, Integer numMonthlySales) {
         this.numMonthlySales = numMonthlySales;
-        this.salesMonth = salesMonth;
-        salesYear = Year.DEFAULT;
+        this.date = date;
+        
+    }
+    
+    public YearMonth getDate(YearMonth date) {
+        return date;
     }
 
-    public String getSalesMonth(){
-        return salesMonth;
+    public void setDate(YearMonth date){
+        this.date = date;
     }
 
-    public Year getSalesYear(){
-        return salesYear;
-    }
-
-    public Integer getnumMonthlySales(){
+    public Integer getNumMonthlySales() {
         return numMonthlySales;
     }
 
-    public void setnumMonthlySales(Integer numMonthlySales){
+    public void setNumMonthlySales(Integer numMonthlySales){
         this.numMonthlySales = numMonthlySales;
-    }
-
-    public void setSalesMonth(String salesMonth){
-        this.salesMonth = salesMonth;
-    }
-
-    public void setSalesYear(Year salesYear){
-        this.salesYear = salesYear;
-    }
+    } 
 
     public String toString() {
-        return "Monthly sales for " + salesMonth + " were " + numMonthlySales + " " +
-                "in the year of " + salesYear;
+        return "For the date of  " + date + " Tesla sold " + numMonthlySales;
     }
 }

@@ -1,17 +1,20 @@
 package com.coderscampus.myapp.service;
 
+import java.time.YearMonth;
+
 import com.coderscampus.myapp.analyzingsalesdata.Sales;
 import com.coderscampus.myapp.analyzingsalesdata.Year;
 
 public class SalesService {
 
-	public static Sales createSalesData(String salesMonth, Year salesYear, Integer numMonthlySales) { 
+	public static Sales createSalesData(YearMonth date, Integer numMonthlySales) { 
 		
-		Sales monthlysale = new Sales(salesMonth, salesYear, numMonthlySales);  
-		monthlysale.setnumMonthlySales(numMonthlySales);
-		monthlysale.setSalesMonth(salesMonth);
-		monthlysale.setSalesYear(salesYear); 
-		return monthlysale;
+		Sales saleInfo = new Sales(date, numMonthlySales);  
+		saleInfo.setDate(date);
+		saleInfo.setNumMonthlySales(numMonthlySales);
+		
+		
+		return saleInfo;
 		
 	}
 	
