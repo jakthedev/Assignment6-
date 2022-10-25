@@ -32,7 +32,15 @@ public class Sales {
         this.numMonthlySales = numMonthlySales;
     } 
 
-    public String toString() {
-        return "For the date of  " + date + " Tesla sold " + numMonthlySales;
+    public String toStringM3() {
+        return "For the date of  " + date + " Tesla sold " + numMonthlySales + " for the model3 ";
+    }
+    
+    public String toStringMS() {
+        return "For the date of  " + date + " Tesla sold " + numMonthlySales + " for the modelS ";
+    }
+    
+    public String toStringMX() {
+        return "For the date of  " + date + " Tesla sold " + numMonthlySales + " for the modelX ";
     }
 }
