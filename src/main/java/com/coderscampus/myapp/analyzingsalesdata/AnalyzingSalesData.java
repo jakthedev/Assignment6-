@@ -22,6 +22,7 @@ public class AnalyzingSalesData {
         try {
             salesReader = new BufferedReader(new FileReader("model3.csv"));
             salesReader.readLine();
+ 
             
             while (salesReader != null) {
                 String model3Info = salesReader.readLine();
@@ -31,10 +32,18 @@ public class AnalyzingSalesData {
                 Sales sale = SalesService.createSalesData(YearMonth.parse(modelstr[0], formatter), 
                 		Integer.valueOf(modelstr[1]));
                 
-                model3[i++] = sale;
-           
+                System.out.println(sale.toString());
+                model3[i++] = sale; 
+                //System.out.println(i);
+                
+            } 
+        }
+            catch(NullPointerException e ){
+                return;
             }
-    } finally{
+            	
+            
+     finally{
     	if (salesReader != null)
     		salesReader.close();
 
