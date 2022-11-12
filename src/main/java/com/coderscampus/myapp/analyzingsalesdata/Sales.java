@@ -10,13 +10,13 @@ public class Sales {
     private Integer numMonthlySales; 
 
 
-    public Sales(YearMonth date, Integer numMonthlySales) {
-        this.numMonthlySales = numMonthlySales;
-        this.date = date;
-        
-    }
+//    public Sales(YearMonth date, Integer numMonthlySales) {
+//        this.numMonthlySales = numMonthlySales;
+//        this.date = date;
+//        
+//    }
     
-    public YearMonth getDate(YearMonth date) {
+    public YearMonth getDate() {
         return date;
     }
 
@@ -33,14 +33,14 @@ public class Sales {
     } 
 
     public String toStringM3() {
-        return "For the date of  " + date + " Tesla sold " + numMonthlySales + " for the model3 ";
+        return "for the date of  " + date + " Tesla sold " + numMonthlySales + " for the model3 ";
     }
     
     public String toStringMS() {
-        return "For the date of  " + date + " Tesla sold " + numMonthlySales + " for the modelS ";
+        return "for the date of  " + date + " Tesla sold " + numMonthlySales + " for the modelS ";
     }
     
     public String toStringMX() {
-        return "For the date of  " + date + " Tesla sold " + numMonthlySales + " for the modelX ";
+        return "for the date of  " + date + " Tesla sold " + numMonthlySales + " for the modelX ";
     }
 }
