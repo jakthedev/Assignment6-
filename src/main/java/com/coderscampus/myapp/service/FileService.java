@@ -82,6 +82,10 @@ public class FileService {
 		return modelS;
 	}
 
+	public Sales[] getModelS() {
+		return model3;
+	}
+	
 	public Sales[] readingModelXData() throws IOException {
 		salesReader = new BufferedReader(new FileReader("modelX.csv"));
 
@@ -103,39 +107,63 @@ public class FileService {
 		}
 		return modelX;
 	}
+	
+	public Sales[] getModelX() {
+		return modelX;
+	}
 
-	public void writesModel3DataToCsv() throws IOException {
+	public void writesModel3DataToCsv(Sales[] finalCleanedmodel) throws IOException {
 
 		try {
 
 			writer = new BufferedWriter(new FileWriter("model3New.csv"));
 			writer.write("Date,Sales\n");
 
-			for (int a = 0; a < salesService.getFinalCleanedModel3().length; a++) {
+			for (int a = 0; a < finalCleanedmodel.length; a++) {
 
-				writer.write(String.valueOf(salesService.getFinalCleanedModel3()[a].getDate()) + ","
-						+ salesService.getFinalCleanedModel3()[a].getNumMonthlySales() + "\n");
+				writer.write(String.valueOf(finalCleanedmodel[a].getDate()) + ","
+						+ finalCleanedmodel[a].getNumMonthlySales() + "\n");
 			}
 		} finally {
 			writer.close();
 		}
 	}
 	
-	public void writesModelXDataToCsv() throws IOException {
+	public void writesModelXDataToCsv(Sales[] finalCleanedmodel) throws IOException {
 
+		Sales[] FinalCleanedModel3 = salesService.getFinalCleanedModel3();
+		
 		try {
 
 			writer = new BufferedWriter(new FileWriter("modelXNew.csv"));
 			writer.write("Date,Sales\n");
 
-			for (int a = 0; a < salesService.getFinalCleanedModel3().length; a++) {
+			for (int a = 0; a < FinalCleanedModel3.length; a++) {
 
-				writer.write(String.valueOf(salesService.getFinalCleanedModel3()[a].getDate()) + ","
-						+ salesService.getFinalCleanedModel3()[a].getNumMonthlySales() + "\n");
+				writer.write(String.valueOf(FinalCleanedModel3[a].getDate()) + ","
+						+ FinalCleanedModel3[a].getNumMonthlySales() + "\n");
 			}
 		} finally {
 			writer.close();
 		}
 	}
+	
+	public void writesModelSDataToCsv(Sales[] finalCleanedmodel) throws IOException {
 
+		Sales[] FinalCleanedModelS = salesService.getFinalCleanedModelS();
+		
+		try {
+
+			writer = new BufferedWriter(new FileWriter("modelSNew.csv"));
+			writer.write("Date,Sales\n");
+
+			for (int a = 0; a < FinalCleanedModelS.length; a++) {
+
+				writer.write(String.valueOf(FinalCleanedModelS[a].getDate()) + ","
+						+ FinalCleanedModelS[a].getNumMonthlySales() + "\n");
+			}
+		} finally {
+			writer.close();
+		}
+	}
 }
