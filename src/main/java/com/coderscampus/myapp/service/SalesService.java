@@ -22,11 +22,11 @@ public class SalesService {
 	BufferedReader salesReader = null;
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM-yy");
 
-	FileService fileservice = new FileService();
+	//FileService fileservice = new FileService();
 
-	Sales[] model3A = fileservice.getModel3();
-	Sales[] modelSA = fileservice.getModelS();
-	Sales[] modelSX = fileservice.getModelX();
+//	Sales[] model3A = fileservice.getModel3();
+//	Sales[] modelSA = fileservice.getModelS();
+//	Sales[] modelSX = fileservice.getModelX();
 
 	int i = 0;
 	int j = 0;
@@ -64,9 +64,9 @@ public class SalesService {
 		modelSS.sort((o2, o1) -> o1.getNumMonthlySales().compareTo(o2.getNumMonthlySales()));
 
 		Sales bmM3 = modelSS.get(0);
-		System.out.println("The best month for Model 3 was " + bmM3.toStringMS());
+		System.out.println("The best month for Model S was " + bmM3.toStringMS());
 		Sales wmM3 = modelSS.get(modelSS.size() - 1);
-		System.out.println("The worst month for Model 3 was " + wmM3.toStringMS());
+		System.out.println("The worst month for Model S was " + wmM3.toStringMS());
 
 		Sales[] finalCleanedmodelSS = modelSS.toArray(new Sales[0]);
 

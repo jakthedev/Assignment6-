@@ -23,7 +23,7 @@ public class FileService {
 	BufferedWriter writer = null;
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM-yy");
 
-	SalesService salesService = new SalesService();
+	//SalesService salesService = new SalesService();
 
 	int i = 0;
 	int j = 0;
@@ -130,18 +130,16 @@ public class FileService {
 	}
 	
 	public void writesModelXDataToCsv(Sales[] finalCleanedmodel) throws IOException {
-
-		Sales[] FinalCleanedModel3 = salesService.getFinalCleanedModel3();
 		
 		try {
 
 			writer = new BufferedWriter(new FileWriter("modelXNew.csv"));
 			writer.write("Date,Sales\n");
 
-			for (int a = 0; a < FinalCleanedModel3.length; a++) {
+			for (int a = 0; a < finalCleanedmodel.length; a++) {
 
-				writer.write(String.valueOf(FinalCleanedModel3[a].getDate()) + ","
-						+ FinalCleanedModel3[a].getNumMonthlySales() + "\n");
+				writer.write(String.valueOf(finalCleanedmodel[a].getDate()) + ","
+						+ finalCleanedmodel[a].getNumMonthlySales() + "\n");
 			}
 		} finally {
 			writer.close();
@@ -149,18 +147,16 @@ public class FileService {
 	}
 	
 	public void writesModelSDataToCsv(Sales[] finalCleanedmodel) throws IOException {
-
-		Sales[] FinalCleanedModelS = salesService.getFinalCleanedModelS();
 		
 		try {
 
 			writer = new BufferedWriter(new FileWriter("modelSNew.csv"));
 			writer.write("Date,Sales\n");
 
-			for (int a = 0; a < FinalCleanedModelS.length; a++) {
+			for (int a = 0; a < finalCleanedmodel.length; a++) {
 
-				writer.write(String.valueOf(FinalCleanedModelS[a].getDate()) + ","
-						+ FinalCleanedModelS[a].getNumMonthlySales() + "\n");
+				writer.write(String.valueOf(finalCleanedmodel[a].getDate()) + ","
+						+ finalCleanedmodel[a].getNumMonthlySales() + "\n");
 			}
 		} finally {
 			writer.close();
