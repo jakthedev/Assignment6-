@@ -22,12 +22,6 @@ public class SalesService {
 	BufferedReader salesReader = null;
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM-yy");
 
-	//FileService fileservice = new FileService();
-
-//	Sales[] model3A = fileservice.getModel3();
-//	Sales[] modelSA = fileservice.getModelS();
-//	Sales[] modelSX = fileservice.getModelX();
-
 	int i = 0;
 	int j = 0;
 	int d = 0;
@@ -95,5 +89,6 @@ public class SalesService {
 	public Sales[] getFinalCleanedModelX() {
 		return finalCleanedmodelXS;
 	}
+	
 
 }

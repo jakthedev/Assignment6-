@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import com.coderscampus.myapp.analyzingsalesdata.Sales;
 
@@ -23,11 +24,12 @@ public class FileService {
 	BufferedWriter writer = null;
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM-yy");
 
-	//SalesService salesService = new SalesService();
-
 	int i = 0;
 	int j = 0;
 	int d = 0;
+	
+	int[] y2017;
+	private int theSum2017Sales;
 
 	public Sales[] readingModel3Data() throws IOException {
 		try {
@@ -59,6 +61,45 @@ public class FileService {
 		return model3;
 	}
 
+	public void setYearsSumModel32017(Sales[] theSum2017Sales) {
+		
+		
+	for (int i = 0; i < model3.length; i++) {
+		
+		if (model3[i].getDate().getYear() == 2017) {
+			
+			int saleValue1 = model3[i].getNumMonthlySales(); 
+			y2017[i] = saleValue1;
+			}
+		for(int a = 0; a < y2017.length; a++) {
+			int sum2017Sales = IntStream.of(a).sum();
+			this.theSum2017Sales = sum2017Sales;
+			//return sum2017Sales;
+			}
+	}
+		}
+	
+	public Integer getModel3YearsSum2017() {
+		return theSum2017Sales;
+	}
+	
+	//int[] y2017; 
+			//int[] y2018; 
+			//int[] y2019;
+	
+//		if (model3[i].getDate().getYear() == 2018) {
+//			
+//			int saleValue2 = model3[i].getNumMonthlySales(); 
+//			y2018[i] = saleValue2;
+//			}
+//		if (model3[i].getDate().getYear() == 2019) {
+//			
+//			int saleValue2 = model3[i].getNumMonthlySales(); 
+//			y2019[i] = saleValue2;
+//			}
+		
+	
+
 	public Sales[] readingModelSData() throws IOException {
 		salesReader = new BufferedReader(new FileReader("modelS.csv"));
 
@@ -85,7 +126,7 @@ public class FileService {
 	public Sales[] getModelS() {
 		return model3;
 	}
-	
+
 	public Sales[] readingModelXData() throws IOException {
 		salesReader = new BufferedReader(new FileReader("modelX.csv"));
 
@@ -107,7 +148,7 @@ public class FileService {
 		}
 		return modelX;
 	}
-	
+
 	public Sales[] getModelX() {
 		return modelX;
 	}
@@ -128,9 +169,9 @@ public class FileService {
 			writer.close();
 		}
 	}
-	
+
 	public void writesModelXDataToCsv(Sales[] finalCleanedmodel) throws IOException {
-		
+
 		try {
 
 			writer = new BufferedWriter(new FileWriter("modelXNew.csv"));
@@ -145,9 +186,9 @@ public class FileService {
 			writer.close();
 		}
 	}
-	
+
 	public void writesModelSDataToCsv(Sales[] finalCleanedmodel) throws IOException {
-		
+
 		try {
 
 			writer = new BufferedWriter(new FileWriter("modelSNew.csv"));
