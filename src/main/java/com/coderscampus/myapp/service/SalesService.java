@@ -5,9 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import com.coderscampus.myapp.analyzingsalesdata.Sales;
 import com.coderscampus.myapp.service.FileService;
@@ -18,6 +20,11 @@ public class SalesService {
 	Sales[] finalCleanedmodel3S;
 	Sales[] finalCleanedmodelSS;
 	Sales[] finalCleanedmodelXS;
+	
+	List<Integer> final2017SalesValues = new ArrayList<Integer>();
+	
+	Integer sum2017Sales;
+	
 
 	BufferedReader salesReader = null;
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM-yy");
@@ -25,6 +32,9 @@ public class SalesService {
 	int i = 0;
 	int j = 0;
 	int d = 0;
+	
+	public Integer theSum2017Sales;
+	
 
 	public static Sales createSalesData(YearMonth date, Integer numMonthlySales) {
 		Sales saleInfo = new Sales();
@@ -90,5 +100,40 @@ public class SalesService {
 		return finalCleanedmodelXS;
 	}
 	
+	public Integer setModel3YearsSum2017(Sales[] modelArray) throws NullPointerException {
+		
+		
+		Integer[] year2017numbers = new Integer[modelArray.length];
+		for (int i = 0; i < modelArray.length; i++) {
+			
+			if (modelArray[i].getDate().getYear() == 2017) {
+				int yyyy17 = modelArray[i].getNumMonthlySales();
+				year2017numbers[i++] = yyyy17;
+			}
+			
+			for (Integer s : year2017numbers ) {
+				if(s != null && s > 0) {
+					final2017SalesValues.add(s);
+				}
+			}
+		}
+		
+		for(Integer v : final2017SalesValues) {
+			sum2017Sales = IntStream.of(v).sum();
+			
+			//theSum2017Sales = sum2017Sales;
+			//System.out.println(sum2017Sales);
+			//return theSum2017Sales;
+			}
+		
+		return sum2017Sales;
+		
+			}
+		
+		public Integer getModel3YearsSum2017() {
+			return sum2017Sales;
+		}
+
+		
 
 }

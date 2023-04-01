@@ -29,7 +29,13 @@ public class FileService {
 	int d = 0;
 	
 	int[] y2017;
+	int[] y2018;
+	int[] y2019;
+	
+	
 	private int theSum2017Sales;
+	private int theSum2018Sales;
+	private int theSum2019Sales;
 
 	public Sales[] readingModel3Data() throws IOException {
 		try {
@@ -61,27 +67,49 @@ public class FileService {
 		return model3;
 	}
 
-	public void setYearsSumModel32017(Sales[] theSum2017Sales) {
-		
-		
-	for (int i = 0; i < model3.length; i++) {
-		
-		if (model3[i].getDate().getYear() == 2017) {
-			
-			int saleValue1 = model3[i].getNumMonthlySales(); 
-			y2017[i] = saleValue1;
-			}
-		for(int a = 0; a < y2017.length; a++) {
-			int sum2017Sales = IntStream.of(a).sum();
-			this.theSum2017Sales = sum2017Sales;
-			//return sum2017Sales;
-			}
-	}
-		}
+//	public void setYearsSumModel32017(Sales[] theSum2017Sales) {
+//		
+//		
+//	for (int i = 0; i < model3.length; i++) {
+//		
+//		if (model3[i].getDate().getYear() == 2017) {
+//			
+//			int saleValue1 = model3[i].getNumMonthlySales(); 
+//			y2017[i] = saleValue1;
+//			}
+//		for(int a = 0; a < y2017.length; a++) {
+//			int sum2017Sales = IntStream.of(a).sum();
+//			this.theSum2017Sales = sum2017Sales;
+//			//return sum2017Sales;
+//			}
+//	}
+//		}
+//	
+//	public Integer getModel3YearsSum2017() {
+//		return theSum2017Sales;
+//	}
 	
-	public Integer getModel3YearsSum2017() {
-		return theSum2017Sales;
-	}
+//	public void setYearsSumModel32018(Sales[] theSum2018Sales) {
+//		
+//		
+//		for (int i = 0; i < model3.length; i++) {
+//			
+//			if (model3[i].getDate().getYear() == 2018) {
+//				
+//				int saleValue2 = model3[i].getNumMonthlySales(); 
+//				y2018[i] = saleValue2;
+//				}
+//			for(int a = 0; a < y2017.length; a++) {
+//				int sum2018Sales = IntStream.of(a).sum();
+//				this.theSum2018Sales = sum2018Sales;
+//				//return sum2017Sales;
+//				}
+//		}
+//			}
+//		
+//		public Integer getModel3YearsSum2018() {
+//			return theSum2018Sales;
+//		}
 	
 	//int[] y2017; 
 			//int[] y2018; 
