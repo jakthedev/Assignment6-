@@ -129,27 +129,40 @@ public class SalesService {
 	
 	public Integer setModel3YearsSum2017(Sales[] modelArray) throws NullPointerException {
 		
-		
+		//Integer zero = 0;
 		Integer[] year2017numbers = new Integer[modelArray.length];
-		for (int i = 0; i < modelArray.length; i++) {
+		Integer[] yyyy17 = new Integer[28]; 
+		
+		for (int i = 0, a = 0; i < modelArray.length; i++) {
 			
 			if (modelArray[i].getDate().getYear() == 2017) {
-				int yyyy17 = modelArray[i].getNumMonthlySales();
-				year2017numbers[i++] = yyyy17;
-			}
-			
-			for (Integer s : year2017numbers ) {
-				if(s != null && s > 0) {
-					finalModel32017SalesValues.add(s);
-				}
+				yyyy17[a++] = modelArray[i].getNumMonthlySales();
+				//year2017numbers[i++] = yyyy17;
 			}
 		}
+		
+		for(int j = 0; j < yyyy17.length; j++) {
+	
+			if(j > 0) {
+				
+				finalModel32017SalesValues.add(j);
+			}
+		}
+		
+//		for (Integer s : yyyy17 ) {
+//			
+//			if(s != null) {
+//				
+//				finalModel32017SalesValues.add(s);
+//			}
+//		}
 		
 		for(Integer v : finalModel32017SalesValues) {
 			sum2017Model3_Sales = IntStream.of(v).sum();
 			}
 		return sum2017Model3_Sales;	
 			}
+	// -----------------------------------------------------------
 		
 		public Integer getModel3YearsSum2017() {
 			return sum2017Model3_Sales;
