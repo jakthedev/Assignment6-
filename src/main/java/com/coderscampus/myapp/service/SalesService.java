@@ -25,17 +25,33 @@ public class SalesService {
 	List<Integer> finalModel32018SalesValues = new ArrayList<Integer>();
 	List<Integer> finalModel32019SalesValues = new ArrayList<Integer>();
 	
+	Integer intSum2017SalesValues;
+	Integer intSum2018SalesValues;
+	Integer intSum2019SalesValues;
+	
 	List<Integer> finalModelS2016SalesValues = new ArrayList<Integer>();
 	List<Integer> finalModelS2017SalesValues = new ArrayList<Integer>();
 	List<Integer> finalModelS2018SalesValues = new ArrayList<Integer>();
 	List<Integer> finalModelS2019SalesValues = new ArrayList<Integer>();
+	
+	Integer intlModelSSum2016SalesValues;
+	Integer intlModelSSum2017SalesValues;
+	Integer intlModelSSum2018SalesValues;
+	Integer intlModelSSum2019SalesValues;
 	
 	List<Integer> finalModelX2016SalesValues = new ArrayList<Integer>();
 	List<Integer> finalModelX2017SalesValues = new ArrayList<Integer>();
 	List<Integer> finalModelX2018SalesValues = new ArrayList<Integer>();
 	List<Integer> finalModelX2019SalesValues = new ArrayList<Integer>();
 	
-	Integer sum2017Model3_Sales;
+	Integer intlModelXsum2016SalesValues;
+	Integer intlModelXsum2017SalesValues;
+	Integer intlModelXsum2018SalesValues;
+	Integer intlModelXsum2019SalesValues;
+	
+	
+	
+	List<Integer> sum2017Model3_Sales = new ArrayList<Integer>();
 	Integer sum2018Model3_Sales;
 	Integer sum2019Model3_Sales;
 	
@@ -129,338 +145,342 @@ public class SalesService {
 	
 	public Integer setModel3YearsSum2017(Sales[] modelArray) throws NullPointerException {
 		
-		//Integer zero = 0;
-		Integer[] year2017numbers = new Integer[modelArray.length];
-		Integer[] yyyy17 = new Integer[28]; 
+		Integer[] yyyy17 = new Integer[modelArray.length]; 
 		
 		for (int i = 0, a = 0; i < modelArray.length; i++) {
 			
 			if (modelArray[i].getDate().getYear() == 2017) {
 				yyyy17[a++] = modelArray[i].getNumMonthlySales();
-				//year2017numbers[i++] = yyyy17;
 			}
 		}
 		
-		for(int j = 0; j < yyyy17.length; j++) {
-	
-			if(j > 0) {
-				
-				finalModel32017SalesValues.add(j);
+		for (Integer s : yyyy17 ) {
+			
+			if(s != null && s > 0) {
+				finalModel32017SalesValues.add(s);
 			}
 		}
 		
-//		for (Integer s : yyyy17 ) {
-//			
-//			if(s != null) {
-//				
-//				finalModel32017SalesValues.add(s);
-//			}
-//		}
+		intSum2017SalesValues = (int) finalModel32017SalesValues.stream()
+	            .mapToDouble(a -> a)
+	            .sum();
 		
-		for(Integer v : finalModel32017SalesValues) {
-			sum2017Model3_Sales = IntStream.of(v).sum();
-			}
-		return sum2017Model3_Sales;	
+		return intSum2017SalesValues;	
 			}
 	// -----------------------------------------------------------
 		
 		public Integer getModel3YearsSum2017() {
-			return sum2017Model3_Sales;
+			return intSum2017SalesValues;
 		}
 		
 		public Integer setModel3YearsSum2018(Sales[] modelArray) throws NullPointerException {
 			
 			
-			Integer[] year2018numbers = new Integer[modelArray.length];
-			for (int i = 0; i < modelArray.length; i++) {
+			Integer[] yyyy18 = new Integer[modelArray.length];
+			
+			for (int i = 0, a =0; i < modelArray.length; i++) {
 				
 				if (modelArray[i].getDate().getYear() == 2018) {
-					int yyyy18 = modelArray[i].getNumMonthlySales();
-					year2018numbers[i++] = yyyy18;
+					yyyy18[a++] = modelArray[i].getNumMonthlySales();
 				}
 				
-				for (Integer s : year2018numbers ) {
-					if(s != null && s > 0) {
-						finalModel32017SalesValues.add(s);
-					}
+			}
+			
+			for (Integer s : yyyy18 ) {
+				
+				if(s != null && s > 0) {
+					finalModel32018SalesValues.add(s);
 				}
 			}
 			
-			for(Integer v : finalModel32017SalesValues) {
-				sum2018Model3_Sales = IntStream.of(v).sum();
+			intSum2018SalesValues = (int) finalModel32018SalesValues.stream()
+		            .mapToDouble(a -> a)
+		            .sum();
+			
+			return intSum2018SalesValues;	
 				}
 			
-			return sum2018Model3_Sales;
 			
-				}
 			
 			public Integer getModel3YearsSum2018() {
-				return sum2018Model3_Sales;
+				return intSum2018SalesValues;
 			}
 			
 			public Integer setModel3YearsSum2019(Sales[] modelArray) throws NullPointerException {
 				
 				
-				Integer[] year2019numbers = new Integer[modelArray.length];
-				for (int i = 0; i < modelArray.length; i++) {
+				Integer[] yyyy19 = new Integer[modelArray.length];
+				
+				for (int i = 0, a = 0; i < modelArray.length; i++) {
 					
 					if (modelArray[i].getDate().getYear() == 2019) {
-						int yyyy19 = modelArray[i].getNumMonthlySales();
-						year2019numbers[i++] = yyyy19;
+						yyyy19[a++] = modelArray[i].getNumMonthlySales();
 					}
 					
-					for (Integer s : year2019numbers ) {
-						if(s != null && s > 0) {
-							finalModel32017SalesValues.add(s);
-						}
+				}
+				
+				for (Integer s : yyyy19 ) {
+					
+					if(s != null && s > 0) {
+						finalModel32019SalesValues.add(s);
 					}
 				}
 				
-				for(Integer v : finalModel32017SalesValues) {
-					sum2019Model3_Sales = IntStream.of(v).sum();
+				intSum2019SalesValues = (int) finalModel32019SalesValues.stream()
+			            .mapToDouble(a -> a)
+			            .sum();
+				
+				return intSum2019SalesValues;	
 					}
-				
-				return sum2019Model3_Sales;
-				
-					}
-				
-				public Integer getModel3YearsSum2019() {
-					return sum2019Model3_Sales;
-				}
+			
+			public Integer getModel3YearsSum2019() {
+				return intSum2019SalesValues;
+			}
 	// START OF MODEL S YEARLY AMOUNTS 
 				
 				public Integer setModelSYearsSum2016(Sales[] modelArray) throws NullPointerException {
 					
 					
-					Integer[] year2016numbers = new Integer[modelArray.length];
-					for (int i = 0; i < modelArray.length; i++) {
+					Integer[] yyyy16 = new Integer[modelArray.length];
+					
+					for (int i = 0, a = 0; i < modelArray.length; i++) {
 						
 						if (modelArray[i].getDate().getYear() == 2016) {
-							int yyyy16 = modelArray[i].getNumMonthlySales();
-							year2016numbers[i++] = yyyy16;
+							yyyy16[a++] = modelArray[i].getNumMonthlySales();
 						}
 						
-						for (Integer s : year2016numbers ) {
-							if(s != null && s > 0) {
-								finalModelS2016SalesValues.add(s);
-							}
+					}
+					
+					for (Integer s : yyyy16 ) {
+						
+						if(s != null && s > 0) {
+							finalModelS2016SalesValues.add(s);
 						}
 					}
 					
-					for(Integer v : finalModelS2016SalesValues) {
-						sum2016ModelS_Sales = IntStream.of(v).sum();
-						}
-					return sum2016ModelS_Sales;	
-						}
+					intlModelSSum2016SalesValues = (int) finalModelS2016SalesValues.stream()
+				            .mapToDouble(a -> a)
+				            .sum();
 					
-					public Integer getModelSYearsSum2016() {
-						return sum2016ModelS_Sales;
-					}
+					return intlModelSSum2016SalesValues;	
+						}
+				
+				public Integer getModelSYearsSum2016() {
+					return intlModelSSum2016SalesValues;
+				}
 				
 				public Integer setModelSYearsSum2017(Sales[] modelArray) throws NullPointerException {
 					
 					
-					Integer[] year2017numbers = new Integer[modelArray.length];
-					for (int i = 0; i < modelArray.length; i++) {
+					Integer[] yyyy17 = new Integer[modelArray.length];
+					
+					for (int i = 0, a = 0; i < modelArray.length; i++) {
 						
-						if (modelArray[i].getDate().getYear() == 2017) {
-							int yyyy17 = modelArray[i].getNumMonthlySales();
-							year2017numbers[i++] = yyyy17;
+						if (modelArray[i].getDate().getYear() == 2016) {
+							yyyy17[a++] = modelArray[i].getNumMonthlySales();
 						}
 						
-						for (Integer s : year2017numbers ) {
-							if(s != null && s > 0) {
-								finalModelS2017SalesValues.add(s);
-							}
+					}
+						
+						for (Integer s : yyyy17 ) {
+						
+						if(s != null && s > 0) {
+							finalModelS2017SalesValues.add(s);
 						}
 					}
 					
-					for(Integer v : finalModelS2017SalesValues) {
-						sum2017ModelS_Sales = IntStream.of(v).sum();
-						}
-					return sum2017ModelS_Sales;	
+					intlModelSSum2017SalesValues = (int) finalModelS2017SalesValues.stream()
+				            .mapToDouble(a -> a)
+				            .sum();
+					
+					return intlModelSSum2017SalesValues;	
 						}
 					
 					public Integer getModelSYearsSum2017() {
-						return sum2017ModelS_Sales;
+						return intlModelSSum2017SalesValues;
 					}
 					
 					public Integer setModelSYearsSum2018(Sales[] modelArray) throws NullPointerException {
 						
 						
-						Integer[] year2018numbers = new Integer[modelArray.length];
-						for (int i = 0; i < modelArray.length; i++) {
+						Integer[] yyyy18 = new Integer[modelArray.length];
+						
+						for (int i = 0, a = 0; i < modelArray.length; i++) {
 							
 							if (modelArray[i].getDate().getYear() == 2018) {
-								int yyyy18 = modelArray[i].getNumMonthlySales();
-								year2018numbers[i++] = yyyy18;
+								yyyy18[a++] = modelArray[i].getNumMonthlySales();
 							}
+						}
 							
-							for (Integer s : year2018numbers ) {
+							for (Integer s : yyyy18 ) {
+								
 								if(s != null && s > 0) {
 									finalModelS2018SalesValues.add(s);
 								}
 							}
-						}
+							
+							intlModelSSum2018SalesValues = (int) finalModelS2018SalesValues.stream()
+						            .mapToDouble(a -> a)
+						            .sum();
+							
+							return intlModelSSum2018SalesValues;	
+								}
 						
-						for(Integer v : finalModelS2018SalesValues) {
-							sum2018ModelS_Sales = IntStream.of(v).sum();
-							}
-						
-						return sum2018ModelS_Sales;
-						
-							}
 						
 						public Integer getModelSYearsSum2018() {
-							return sum2018ModelS_Sales;
+							return intlModelSSum2018SalesValues;
 						}
 						
 						public Integer setModelSYearsSum2019(Sales[] modelArray) throws NullPointerException {
 							
 							
-							Integer[] year2019numbers = new Integer[modelArray.length];
-							for (int i = 0; i < modelArray.length; i++) {
+							Integer[] yyyy19 = new Integer[modelArray.length];
+							
+							for (int i = 0, a = 0; i < modelArray.length; i++) {
 								
 								if (modelArray[i].getDate().getYear() == 2019) {
-									int yyyy19 = modelArray[i].getNumMonthlySales();
-									year2019numbers[i++] = yyyy19;
+									yyyy19[a++] = modelArray[i].getNumMonthlySales();
 								}
+							}
 								
-								for (Integer s : year2019numbers ) {
+								for (Integer s : yyyy19 ) {
 									if(s != null && s > 0) {
 										finalModelS2019SalesValues.add(s);
 									}
 								}
-							}
 							
-							for(Integer v : finalModelS2019SalesValues) {
-								sum2019ModelS_Sales = IntStream.of(v).sum();
-								}
 							
-							return sum2019ModelS_Sales;
-							
-								}
+								intlModelSSum2019SalesValues = (int) finalModelS2019SalesValues.stream()
+							            .mapToDouble(a -> a)
+							            .sum();
+								
+								return intlModelSSum2019SalesValues;	
+									}
 							
 							public Integer getModelSYearsSum2019() {
-								return sum2019ModelS_Sales;
+								return intlModelSSum2019SalesValues;
 							}
 							
 		// START OF MODEL X YEARLY AMOUNTS
 
 							public Integer setModelXYearsSum2016(Sales[] modelArray) throws NullPointerException {
 								
+
+								Integer[] yyyy16 = new Integer[modelArray.length];
 								
-								Integer[] year2016numbers = new Integer[modelArray.length];
-								for (int i = 0; i < modelArray.length; i++) {
+								for (int i = 0, a = 0; i < modelArray.length; i++) {
 									
 									if (modelArray[i].getDate().getYear() == 2016) {
-										int yyyy16 = modelArray[i].getNumMonthlySales();
-										year2016numbers[i++] = yyyy16;
+										yyyy16[a++] = modelArray[i].getNumMonthlySales();
 									}
+								}
 									
-									for (Integer s : year2016numbers ) {
+									for (Integer s : yyyy16 ) {
 										if(s != null && s > 0) {
 											finalModelX2016SalesValues.add(s);
 										}
 									}
-								}
 								
-								for(Integer v : finalModelX2016SalesValues) {
-									sum2016ModelX_Sales = IntStream.of(v).sum();
-									}
-								return sum2016ModelX_Sales;	
-									}
 								
-								public Integer getModelXYearsSum2016() {
-									return sum2016ModelX_Sales;
+									intlModelXsum2016SalesValues = (int) finalModelX2016SalesValues.stream()
+								            .mapToDouble(a -> a)
+								            .sum();
+									
+									return intlModelXsum2016SalesValues;	
+										}
+							
+									public Integer getModelXYearsSum2016() {
+										return intlModelXsum2016SalesValues;
 								}
 							
 							public Integer setModelXYearsSum2017(Sales[] modelArray) throws NullPointerException {
 								
 								
-								Integer[] year2017numbers = new Integer[modelArray.length];
-								for (int i = 0; i < modelArray.length; i++) {
+								Integer[] yyyy17 = new Integer[modelArray.length];
+								
+								for (int i = 0, a = 0; i < modelArray.length; i++) {
 									
 									if (modelArray[i].getDate().getYear() == 2017) {
-										int yyyy17 = modelArray[i].getNumMonthlySales();
-										year2017numbers[i++] = yyyy17;
+										yyyy17[a++] = modelArray[i].getNumMonthlySales();
 									}
+								}
 									
-									for (Integer s : year2017numbers ) {
+									for (Integer s : yyyy17 ) {
 										if(s != null && s > 0) {
 											finalModelX2017SalesValues.add(s);
 										}
 									}
-								}
 								
-								for(Integer v : finalModelX2017SalesValues) {
-									sum2017ModelX_Sales = IntStream.of(v).sum();
-									}
-								return sum2017ModelX_Sales;	
-									}
+								
+									intlModelXsum2017SalesValues = (int) finalModelX2017SalesValues.stream()
+								            .mapToDouble(a -> a)
+								            .sum();
+									
+									return intlModelXsum2017SalesValues;	
+										}
 								
 								public Integer getModelXYearsSum2017() {
-									return sum2017ModelX_Sales;
+									return intlModelXsum2017SalesValues;
 								}
 								
 								public Integer setModelXYearsSum2018(Sales[] modelArray) throws NullPointerException {
 									
 									
-									Integer[] year2018numbers = new Integer[modelArray.length];
-									for (int i = 0; i < modelArray.length; i++) {
+									Integer[] yyyy18 = new Integer[modelArray.length];
+									
+									for (int i = 0, a = 0; i < modelArray.length; i++) {
 										
 										if (modelArray[i].getDate().getYear() == 2018) {
-											int yyyy18 = modelArray[i].getNumMonthlySales();
-											year2018numbers[i++] = yyyy18;
+											yyyy18[a++] = modelArray[i].getNumMonthlySales();
 										}
+									}
 										
-										for (Integer s : year2018numbers ) {
+										for (Integer s : yyyy18 ) {
 											if(s != null && s > 0) {
 												finalModelX2018SalesValues.add(s);
 											}
 										}
-									}
 									
-									for(Integer v : finalModelX2018SalesValues) {
-										sum2018ModelX_Sales = IntStream.of(v).sum();
-										}
 									
-									return sum2018ModelX_Sales;
-									
-										}
+										intlModelXsum2018SalesValues = (int) finalModelX2018SalesValues.stream()
+									            .mapToDouble(a -> a)
+									            .sum();
+										
+										return intlModelXsum2018SalesValues;	
+											}
 									
 									public Integer getModelXYearsSum2018() {
-										return sum2018ModelX_Sales;
+										return intlModelXsum2018SalesValues;
 									}
 									
 									public Integer setModelXYearsSum2019(Sales[] modelArray) throws NullPointerException {
 										
 										
-										Integer[] year2019numbers = new Integer[modelArray.length];
-										for (int i = 0; i < modelArray.length; i++) {
+										Integer[] yyyy19 = new Integer[modelArray.length];
+										
+										for (int i = 0, a = 0; i < modelArray.length; i++) {
 											
 											if (modelArray[i].getDate().getYear() == 2019) {
-												int yyyy19 = modelArray[i].getNumMonthlySales();
-												year2019numbers[i++] = yyyy19;
+												yyyy19[a++] = modelArray[i].getNumMonthlySales();
 											}
+										}
 											
-											for (Integer s : year2019numbers ) {
+											for (Integer s : yyyy19 ) {
 												if(s != null && s > 0) {
 													finalModelX2019SalesValues.add(s);
 												}
 											}
-										}
 										
-										for(Integer v : finalModelX2019SalesValues) {
-											sum2019ModelX_Sales = IntStream.of(v).sum();
-											}
 										
-										return sum2019ModelX_Sales;
-										
-											}
+											intlModelXsum2019SalesValues = (int) finalModelX2019SalesValues.stream()
+										            .mapToDouble(a -> a)
+										            .sum();
+											
+											return intlModelXsum2019SalesValues;	
+												}
 										
 										public Integer getModelXYearsSum2019() {
-											return sum2019ModelX_Sales;
+											return intlModelXsum2019SalesValues;
 										}
 		
 
