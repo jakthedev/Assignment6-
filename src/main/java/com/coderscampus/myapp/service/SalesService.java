@@ -49,9 +49,7 @@ public class SalesService {
 	Integer intlModelXsum2018SalesValues;
 	Integer intlModelXsum2019SalesValues;
 	
-	
-	
-	List<Integer> sum2017Model3_Sales = new ArrayList<Integer>();
+	Integer sum2017Model3_Sales;
 	Integer sum2018Model3_Sales;
 	Integer sum2019Model3_Sales;
 	
