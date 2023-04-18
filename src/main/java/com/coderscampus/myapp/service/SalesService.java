@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -143,16 +144,24 @@ public class SalesService {
 	
 	public Integer setModel3YearsSum2017(Sales[] modelArray) throws NullPointerException {
 		
-		Integer[] yyyy17 = new Integer[modelArray.length]; 
+		Integer[] yyyy17 = new Integer[modelArray.length];
+		List<Integer> cleanedyyyy17 = new ArrayList<Integer>();
 		
 		for (int i = 0, a = 0; i < modelArray.length; i++) {
 			
 			if (modelArray[i].getDate().getYear() == 2017) {
 				yyyy17[a++] = modelArray[i].getNumMonthlySales();
 			}
+			
 		}
 		
-		for (Integer s : yyyy17 ) {
+		for(Integer s : yyyy17) {
+		       if(s != null && s > 0) {
+		    	   cleanedyyyy17.add(s);
+		       }
+		}
+		
+		for (Integer s : cleanedyyyy17 ) {
 			
 			if(s != null && s > 0) {
 				finalModel32017SalesValues.add(s);
@@ -165,26 +174,29 @@ public class SalesService {
 		
 		return intSum2017SalesValues;	
 			}
-	// -----------------------------------------------------------
-		
+
 		public Integer getModel3YearsSum2017() {
 			return intSum2017SalesValues;
 		}
 		
 		public Integer setModel3YearsSum2018(Sales[] modelArray) throws NullPointerException {
-			
-			
-			Integer[] yyyy18 = new Integer[modelArray.length];
-			
-			for (int i = 0, a =0; i < modelArray.length; i++) {
 				
+			Integer[] yyyy18 = new Integer[modelArray.length];
+			List<Integer> cleanedyyyy18 = new ArrayList<Integer>();
+			
+			for (int i = 0, a = 0; i < modelArray.length; i++) {
 				if (modelArray[i].getDate().getYear() == 2018) {
 					yyyy18[a++] = modelArray[i].getNumMonthlySales();
 				}
-				
 			}
 			
-			for (Integer s : yyyy18 ) {
+			for(Integer s : yyyy18) {
+			       if(s != null && s > 0) {
+			    	   cleanedyyyy18.add(s);
+			       }
+			}
+			
+			for (Integer s : cleanedyyyy18 ) {
 				
 				if(s != null && s > 0) {
 					finalModel32018SalesValues.add(s);
@@ -197,28 +209,31 @@ public class SalesService {
 			
 			return intSum2018SalesValues;	
 				}
-			
-			
+		
 			
 			public Integer getModel3YearsSum2018() {
 				return intSum2018SalesValues;
 			}
 			
 			public Integer setModel3YearsSum2019(Sales[] modelArray) throws NullPointerException {
-				
-				
+							
 				Integer[] yyyy19 = new Integer[modelArray.length];
+				List<Integer> cleanedyyyy19 = new ArrayList<Integer>();
 				
 				for (int i = 0, a = 0; i < modelArray.length; i++) {
 					
 					if (modelArray[i].getDate().getYear() == 2019) {
 						yyyy19[a++] = modelArray[i].getNumMonthlySales();
 					}
-					
 				}
 				
-				for (Integer s : yyyy19 ) {
-					
+				for(Integer s : yyyy19) {
+				       if(s != null && s > 0) {
+				    	   cleanedyyyy19.add(s);
+				       }
+				}
+				
+				for (Integer s : cleanedyyyy19 ) {
 					if(s != null && s > 0) {
 						finalModel32019SalesValues.add(s);
 					}
@@ -240,6 +255,7 @@ public class SalesService {
 					
 					
 					Integer[] yyyy16 = new Integer[modelArray.length];
+					List<Integer> cleanedyyyy16 = new ArrayList<Integer>();
 					
 					for (int i = 0, a = 0; i < modelArray.length; i++) {
 						
@@ -249,7 +265,13 @@ public class SalesService {
 						
 					}
 					
-					for (Integer s : yyyy16 ) {
+					for(Integer s : yyyy16) {
+					       if(s != null && s > 0) {
+					    	   cleanedyyyy16.add(s);
+					       }
+					}
+					
+					for (Integer s : cleanedyyyy16 ) {
 						
 						if(s != null && s > 0) {
 							finalModelS2016SalesValues.add(s);
@@ -271,16 +293,23 @@ public class SalesService {
 					
 					
 					Integer[] yyyy17 = new Integer[modelArray.length];
+					List<Integer> cleanedyyyy17 = new ArrayList<Integer>();
 					
 					for (int i = 0, a = 0; i < modelArray.length; i++) {
 						
-						if (modelArray[i].getDate().getYear() == 2016) {
+						if (modelArray[i].getDate().getYear() == 2017) {
 							yyyy17[a++] = modelArray[i].getNumMonthlySales();
 						}
 						
 					}
-						
-						for (Integer s : yyyy17 ) {
+					
+					for(Integer s : yyyy17) {
+					       if(s != null && s > 0) {
+					    	   cleanedyyyy17.add(s);
+					       }
+					}
+					
+					for (Integer s : cleanedyyyy17 ) {
 						
 						if(s != null && s > 0) {
 							finalModelS2017SalesValues.add(s);
@@ -302,20 +331,28 @@ public class SalesService {
 						
 						
 						Integer[] yyyy18 = new Integer[modelArray.length];
+						List<Integer> cleanedyyyy18 = new ArrayList<Integer>();
 						
 						for (int i = 0, a = 0; i < modelArray.length; i++) {
 							
 							if (modelArray[i].getDate().getYear() == 2018) {
 								yyyy18[a++] = modelArray[i].getNumMonthlySales();
 							}
-						}
 							
-							for (Integer s : yyyy18 ) {
-								
-								if(s != null && s > 0) {
-									finalModelS2018SalesValues.add(s);
-								}
+						}
+						
+						for(Integer s : yyyy18) {
+						       if(s != null && s > 0) {
+						    	   cleanedyyyy18.add(s);
+						       }
+						}
+						
+						for (Integer s : cleanedyyyy18 ) {
+							
+							if(s != null && s > 0) {
+								finalModelS2018SalesValues.add(s);
 							}
+						}
 							
 							intlModelSSum2018SalesValues = (int) finalModelS2018SalesValues.stream()
 						            .mapToDouble(a -> a)
@@ -333,19 +370,28 @@ public class SalesService {
 							
 							
 							Integer[] yyyy19 = new Integer[modelArray.length];
+							List<Integer> cleanedyyyy19 = new ArrayList<Integer>();
 							
 							for (int i = 0, a = 0; i < modelArray.length; i++) {
 								
 								if (modelArray[i].getDate().getYear() == 2019) {
 									yyyy19[a++] = modelArray[i].getNumMonthlySales();
 								}
-							}
 								
-								for (Integer s : yyyy19 ) {
-									if(s != null && s > 0) {
-										finalModelS2019SalesValues.add(s);
-									}
+							}
+							
+							for(Integer s : yyyy19) {
+							       if(s != null && s > 0) {
+							    	   cleanedyyyy19.add(s);
+							       }
+							}
+							
+							for (Integer s : cleanedyyyy19 ) {
+								
+								if(s != null && s > 0) {
+									finalModelS2019SalesValues.add(s);
 								}
+							}
 							
 							
 								intlModelSSum2019SalesValues = (int) finalModelS2019SalesValues.stream()
@@ -365,6 +411,7 @@ public class SalesService {
 								
 
 								Integer[] yyyy16 = new Integer[modelArray.length];
+								List<Integer> cleanedyyyy16 = new ArrayList<Integer>();
 								
 								for (int i = 0, a = 0; i < modelArray.length; i++) {
 									
@@ -372,12 +419,19 @@ public class SalesService {
 										yyyy16[a++] = modelArray[i].getNumMonthlySales();
 									}
 								}
+								
+								for(Integer s : yyyy16) {
+								       if(s != null && s > 0) {
+								    	   cleanedyyyy16.add(s);
+								       }
+								}
+								
+								for (Integer s : cleanedyyyy16 ) {
 									
-									for (Integer s : yyyy16 ) {
-										if(s != null && s > 0) {
-											finalModelX2016SalesValues.add(s);
-										}
+									if(s != null && s > 0) {
+										finalModelX2016SalesValues.add(s);
 									}
+								}
 								
 								
 									intlModelXsum2016SalesValues = (int) finalModelX2016SalesValues.stream()
@@ -395,19 +449,28 @@ public class SalesService {
 								
 								
 								Integer[] yyyy17 = new Integer[modelArray.length];
+								List<Integer> cleanedyyyy17 = new ArrayList<Integer>();
 								
 								for (int i = 0, a = 0; i < modelArray.length; i++) {
 									
 									if (modelArray[i].getDate().getYear() == 2017) {
 										yyyy17[a++] = modelArray[i].getNumMonthlySales();
 									}
-								}
 									
-									for (Integer s : yyyy17 ) {
-										if(s != null && s > 0) {
-											finalModelX2017SalesValues.add(s);
-										}
+								}
+								
+								for(Integer s : yyyy17) {
+								       if(s != null && s > 0) {
+								    	   cleanedyyyy17.add(s);
+								       }
+								}
+								
+								for (Integer s : cleanedyyyy17 ) {
+									
+									if(s != null && s > 0) {
+										finalModelX2017SalesValues.add(s);
 									}
+								}
 								
 								
 									intlModelXsum2017SalesValues = (int) finalModelX2017SalesValues.stream()
@@ -425,19 +488,28 @@ public class SalesService {
 									
 									
 									Integer[] yyyy18 = new Integer[modelArray.length];
+									List<Integer> cleanedyyyy18 = new ArrayList<Integer>();
 									
 									for (int i = 0, a = 0; i < modelArray.length; i++) {
 										
 										if (modelArray[i].getDate().getYear() == 2018) {
 											yyyy18[a++] = modelArray[i].getNumMonthlySales();
 										}
-									}
 										
-										for (Integer s : yyyy18 ) {
-											if(s != null && s > 0) {
-												finalModelX2018SalesValues.add(s);
-											}
+									}
+									
+									for(Integer s : yyyy18) {
+									       if(s != null && s > 0) {
+									    	   cleanedyyyy18.add(s);
+									       }
+									}
+									
+									for (Integer s : cleanedyyyy18 ) {
+										
+										if(s != null && s > 0) {
+											finalModelX2018SalesValues.add(s);
 										}
+									}
 									
 									
 										intlModelXsum2018SalesValues = (int) finalModelX2018SalesValues.stream()
@@ -455,19 +527,28 @@ public class SalesService {
 										
 										
 										Integer[] yyyy19 = new Integer[modelArray.length];
+										List<Integer> cleanedyyyy19 = new ArrayList<Integer>();
 										
 										for (int i = 0, a = 0; i < modelArray.length; i++) {
 											
 											if (modelArray[i].getDate().getYear() == 2019) {
 												yyyy19[a++] = modelArray[i].getNumMonthlySales();
 											}
-										}
 											
-											for (Integer s : yyyy19 ) {
-												if(s != null && s > 0) {
-													finalModelX2019SalesValues.add(s);
-												}
+										}
+										
+										for(Integer s : yyyy19) {
+										       if(s != null && s > 0) {
+										    	   cleanedyyyy19.add(s);
+										       }
+										}
+										
+										for (Integer s : cleanedyyyy19 ) {
+											
+											if(s != null && s > 0) {
+												finalModelX2019SalesValues.add(s);
 											}
+										}
 										
 										
 											intlModelXsum2019SalesValues = (int) finalModelX2019SalesValues.stream()

@@ -16,7 +16,7 @@ import com.coderscampus.myapp.analyzingsalesdata.Sales;
 
 public class FileService {
 
-	Sales[] model3 = new Sales[29];
+	Sales[] model3 = new Sales[30];
 	Sales[] modelS = new Sales[48];
 	Sales[] modelX = new Sales[48];
 
@@ -24,15 +24,18 @@ public class FileService {
 	BufferedWriter writer = null;
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM-yy");
 
+	int a = 0;
 	int i = 0;
 	int j = 0;
 	int d = 0;
 	
+	int[] y2016;
 	int[] y2017;
 	int[] y2018;
 	int[] y2019;
 	
 	
+	private int theSum2016Sales;
 	private int theSum2017Sales;
 	private int theSum2018Sales;
 	private int theSum2019Sales;
@@ -53,7 +56,7 @@ public class FileService {
 
 				model3[i++] = sale;
 				// System.out.println(i);
-				if (i == 29) {
+				if (i == 30) {
 					break;
 				}
 			}
@@ -66,68 +69,7 @@ public class FileService {
 	public Sales[] getModel3() {
 		return model3;
 	}
-
-//	public void setYearsSumModel32017(Sales[] theSum2017Sales) {
-//		
-//		
-//	for (int i = 0; i < model3.length; i++) {
-//		
-//		if (model3[i].getDate().getYear() == 2017) {
-//			
-//			int saleValue1 = model3[i].getNumMonthlySales(); 
-//			y2017[i] = saleValue1;
-//			}
-//		for(int a = 0; a < y2017.length; a++) {
-//			int sum2017Sales = IntStream.of(a).sum();
-//			this.theSum2017Sales = sum2017Sales;
-//			//return sum2017Sales;
-//			}
-//	}
-//		}
-//	
-//	public Integer getModel3YearsSum2017() {
-//		return theSum2017Sales;
-//	}
 	
-//	public void setYearsSumModel32018(Sales[] theSum2018Sales) {
-//		
-//		
-//		for (int i = 0; i < model3.length; i++) {
-//			
-//			if (model3[i].getDate().getYear() == 2018) {
-//				
-//				int saleValue2 = model3[i].getNumMonthlySales(); 
-//				y2018[i] = saleValue2;
-//				}
-//			for(int a = 0; a < y2017.length; a++) {
-//				int sum2018Sales = IntStream.of(a).sum();
-//				this.theSum2018Sales = sum2018Sales;
-//				//return sum2017Sales;
-//				}
-//		}
-//			}
-//		
-//		public Integer getModel3YearsSum2018() {
-//			return theSum2018Sales;
-//		}
-	
-	//int[] y2017; 
-			//int[] y2018; 
-			//int[] y2019;
-	
-//		if (model3[i].getDate().getYear() == 2018) {
-//			
-//			int saleValue2 = model3[i].getNumMonthlySales(); 
-//			y2018[i] = saleValue2;
-//			}
-//		if (model3[i].getDate().getYear() == 2019) {
-//			
-//			int saleValue2 = model3[i].getNumMonthlySales(); 
-//			y2019[i] = saleValue2;
-//			}
-		
-	
-
 	public Sales[] readingModelSData() throws IOException {
 		salesReader = new BufferedReader(new FileReader("modelS.csv"));
 
