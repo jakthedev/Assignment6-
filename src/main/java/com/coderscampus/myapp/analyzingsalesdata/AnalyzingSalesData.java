@@ -45,8 +45,12 @@ public class AnalyzingSalesData {
 		Integer yearlySumModel32018 = salesService.getModel3YearsSum2018();
 		Integer yearlySumModel32019 = salesService.getModel3YearsSum2019();
 		
-		Map<YearMonth, List<Sales>> groupByPriceMap = 
-				model3F.stream().collect(Collectors.groupingBy(model3F::getDate));
+		Map<Object, List<Sales>> groupModel3Year2017 = 
+				model3F.stream().collect(Collectors.groupingBy((model3F) -> 
+				model3F.getDate().getYear());
+		
+		Map<YearMonth, List<Sales>> groupByYeareMap = 
+				model3F.stream().collect(Collectors.groupingBy(model3F::getDate.getYear));
 		
 //		System.out.println("2017-> " + yearlySumModel32017);
 //		System.out.println("2018-> " + yearlySumModel32018);
