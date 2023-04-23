@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.time.YearMonth;
@@ -30,6 +31,7 @@ public class AnalyzingSalesData {
 		
 		
 		Sales[] model3 = fileService.readingModel3Data(); 
+		ArrayList<Sales> model3F = new ArrayList<>(Arrays.asList(model3));
 		Sales[] modelX = fileService.readingModelXData(); 
 		Sales[] modelS = fileService.readingModelSData();
 		
@@ -42,9 +44,13 @@ public class AnalyzingSalesData {
 		Integer yearlySumModel32017 = salesService.getModel3YearsSum2017();
 		Integer yearlySumModel32018 = salesService.getModel3YearsSum2018();
 		Integer yearlySumModel32019 = salesService.getModel3YearsSum2019();
-		System.out.println("2017-> " + yearlySumModel32017);
-		System.out.println("2018-> " + yearlySumModel32018);
-		System.out.println("2019-> " + yearlySumModel32019);
+		
+		Map<YearMonth, List<Sales>> groupByPriceMap = 
+				model3F.stream().collect(Collectors.groupingBy(model3F::getDate));
+		
+//		System.out.println("2017-> " + yearlySumModel32017);
+//		System.out.println("2018-> " + yearlySumModel32018);
+//		System.out.println("2019-> " + yearlySumModel32019);
 		System.out.println(); 
 		
 		salesService.sortModel3Array(model3); 
